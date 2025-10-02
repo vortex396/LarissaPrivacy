@@ -167,6 +167,9 @@ function App() {
               <h1 className="text-gray-800 text-2xl font-bold mb-2">
                 Larissa Silva
               </h1>
+              <p className="text-gray-500 text-sm mb-2">
+                XXXXXX
+              </p>
               <p className="text-blue-600 text-lg font-medium">
                 @larissasilva_
               </p>
