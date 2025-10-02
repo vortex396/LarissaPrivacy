@@ -29,25 +29,25 @@ function generateSessionId(): string {
   return sessionId;
 }
 
-export async function logPurchaseEvent(email: string): Promise<boolean> {
+export async function logEvent(email: string, eventType: 'InitiateCheckout' | 'Purchase'): Promise<boolean> {
   try {
     const sessionId = generateSessionId();
     const uniqueIdentifier = `${sessionId}_${navigator.userAgent}`;
 
-    const { data: recentEvent } = await supabase
+    const { data: existingEvent } = await supabase
       .from('purchase_events')
-      .select('id, created_at')
+      .select('id, event_type, created_at')
       .eq('user_email', uniqueIdentifier)
       .maybeSingle();
 
-    if (recentEvent) {
-      console.log('Purchase event already fired for this session');
+    if (existingEvent) {
+      console.log(`Event already fired for this session: ${existingEvent.event_type}`);
       return false;
     }
 
     const eventData: PurchaseEvent = {
       user_email: uniqueIdentifier,
-      event_type: 'Purchase',
+      event_type: eventType,
       value: 10.00,
       currency: 'BRL',
       user_agent: navigator.userAgent,
@@ -58,14 +58,22 @@ export async function logPurchaseEvent(email: string): Promise<boolean> {
       .insert([eventData]);
 
     if (error) {
-      console.error('Error logging purchase event:', error);
+      console.error(`Error logging ${eventType} event:`, error);
       return false;
     }
 
-    console.log('Purchase event logged successfully');
+    console.log(`${eventType} event logged successfully`);
     return true;
   } catch (error) {
-    console.error('Error in logPurchaseEvent:', error);
+    console.error(`Error in logEvent:`, error);
     return false;
   }
+}
+
+export async function logPurchaseEvent(email: string): Promise<boolean> {
+  return logEvent(email, 'Purchase');
+}
+
+export async function logInitiateCheckoutEvent(email: string): Promise<boolean> {
+  return logEvent(email, 'InitiateCheckout');
 }

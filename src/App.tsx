@@ -1,10 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Heart, MessageCircle, Share, Lock, Users, Play, Camera, Crown, Star, Gift, MoreHorizontal, DollarSign, Instagram, Twitter, Music, ChevronUp, ChevronDown } from 'lucide-react';
-import { logPurchaseEvent } from './lib/supabase';
+import { logPurchaseEvent, logInitiateCheckoutEvent } from './lib/supabase';
 
 function App() {
   useEffect(() => {
     window.logPurchaseToSupabase = logPurchaseEvent;
+    window.logInitiateCheckoutToSupabase = logInitiateCheckoutEvent;
+
+    // Dispara InitiateCheckout ao carregar a primeira vez
+    if (typeof window.fireInitiateCheckoutEvent === 'function') {
+      window.fireInitiateCheckoutEvent('visitor');
+    }
   }, []);
 
   const [isLoggedIn, setIsLoggedIn] = useState(false);
