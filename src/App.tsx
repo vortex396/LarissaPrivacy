@@ -1,11 +1,17 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Heart, MessageCircle, Share, Lock, Users, Play, Camera, Crown, Star, Gift, MoreHorizontal, DollarSign, Instagram, Twitter, Music, ChevronUp, ChevronDown } from 'lucide-react';
+import { logPurchaseEvent } from './lib/supabase';
 
 function App() {
+  useEffect(() => {
+    window.logPurchaseToSupabase = logPurchaseEvent;
+  }, []);
+
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
   const [error, setError] = useState('');
+  const [userEmail, setUserEmail] = useState<string>('');
   const [activeTab, setActiveTab] = useState('feed');
   const [activeMediaTab, setActiveMediaTab] = useState('videos');
   const [showFullBio, setShowFullBio] = useState(false);
@@ -76,11 +82,11 @@ function App() {
     61: 398
   });
 
-  const handleLogin = (e: React.FormEvent) => {
+  const handleLogin = async (e: React.FormEvent) => {
     e.preventDefault();
     const validPasswords = [
       '142536',
-      '147852', 
+      '147852',
       '369852',
       '258741',
       '963741',
@@ -95,15 +101,19 @@ function App() {
       '951357',
       '753951'
     ];
-    
+
     if (validPasswords.includes(password)) {
+      const email = `user_${password}@privacy.local`;
+      setUserEmail(email);
+
+      const canFireEvent = await logPurchaseEvent(email);
+
+      if (canFireEvent && typeof window.firePurchaseEvent === 'function') {
+        await window.firePurchaseEvent(email);
+      }
+
       setIsLoggedIn(true);
       setError('');
-
-      // Dispara o evento Purchase após login bem-sucedido
-      if (typeof window.firePurchaseEvent === 'function') {
-        window.firePurchaseEvent();
-      }
     } else {
       setError('Senha incorreta. Tente novamente.');
     }

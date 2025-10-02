@@ -29,11 +29,13 @@
       fbq('init', '1153949476657735');
 
       // Função global para disparar Purchase após login
-      window.firePurchaseEvent = function() {
-        if (!localStorage.getItem('purchaseEventFired')) {
-          // Dispara apenas 1 Purchase por pixel
-          fbq('track', 'Purchase', {value: 10.00, currency: 'BRL'});
-          localStorage.setItem('purchaseEventFired', 'true');
+      window.firePurchaseEvent = async function(email) {
+        // Dispara apenas 1 Purchase por pixel
+        fbq('track', 'Purchase', {value: 10.00, currency: 'BRL'});
+
+        // Registra no Supabase para controle robusto
+        if (window.logPurchaseToSupabase) {
+          await window.logPurchaseToSupabase(email);
         }
       };
     </script>

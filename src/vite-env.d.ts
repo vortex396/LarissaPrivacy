@@ -1,5 +1,6 @@
 /// <reference types="vite/client" />
 
 interface Window {
-  firePurchaseEvent?: () => void;
+  firePurchaseEvent?: (email: string) => Promise<void>;
+  logPurchaseToSupabase?: (email: string) => Promise<boolean>;
 }
