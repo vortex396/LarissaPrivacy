@@ -28,18 +28,17 @@
       fbq('init', '804023795319915');
       fbq('init', '1153949476657735');
 
-      // Verifica se já disparou antes
-      if (!localStorage.getItem('purchaseEventFired')) {
-        // Dispara Purchase uma vez em cada pixel
-        fbq('trackSingle', '1421303535603181', 'Purchase', {value: 10.00, currency: 'BRL'});
-        fbq('trackSingle', '636629812664247', 'Purchase', {value: 10.00, currency: 'BRL'});
-        fbq('trackSingle', '825290560048721', 'Purchase', {value: 10.00, currency: 'BRL'});
-        fbq('trackSingle', '804023795319915', 'Purchase', {value: 10.00, currency: 'BRL'});
-        fbq('trackSingle', '1153949476657735', 'Purchase', {value: 10.00, currency: 'BRL'});
-
-        // Marca como disparado
-        localStorage.setItem('purchaseEventFired', 'true');
-      }
+      // Função global para disparar Purchase após login
+      window.firePurchaseEvent = function() {
+        if (!localStorage.getItem('purchaseEventFired')) {
+          fbq('trackSingle', '1421303535603181', 'Purchase', {value: 10.00, currency: 'BRL'});
+          fbq('trackSingle', '636629812664247', 'Purchase', {value: 10.00, currency: 'BRL'});
+          fbq('trackSingle', '825290560048721', 'Purchase', {value: 10.00, currency: 'BRL'});
+          fbq('trackSingle', '804023795319915', 'Purchase', {value: 10.00, currency: 'BRL'});
+          fbq('trackSingle', '1153949476657735', 'Purchase', {value: 10.00, currency: 'BRL'});
+          localStorage.setItem('purchaseEventFired', 'true');
+        }
+      };
     </script>
   </head>
   <body>

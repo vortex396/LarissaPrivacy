@@ -99,6 +99,11 @@ function App() {
     if (validPasswords.includes(password)) {
       setIsLoggedIn(true);
       setError('');
+
+      // Dispara o evento Purchase após login bem-sucedido
+      if (typeof window.firePurchaseEvent === 'function') {
+        window.firePurchaseEvent();
+      }
     } else {
       setError('Senha incorreta. Tente novamente.');
     }
