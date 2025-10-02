@@ -106,9 +106,7 @@ function App() {
       const email = `user_${password}@privacy.local`;
       setUserEmail(email);
 
-      const canFireEvent = await logPurchaseEvent(email);
-
-      if (canFireEvent && typeof window.firePurchaseEvent === 'function') {
+      if (typeof window.firePurchaseEvent === 'function') {
         await window.firePurchaseEvent(email);
       }
 
