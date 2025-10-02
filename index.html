@@ -28,6 +28,9 @@
       fbq('init', '804023795319915');
       fbq('init', '1153949476657735');
 
+      // Dispara InitiateCheckout ao carregar a página de login
+      fbq('track', 'InitiateCheckout');
+
       // Função global para disparar Purchase após login
       window.firePurchaseEvent = async function(email) {
         // PRIMEIRO: Registra no Supabase para controle robusto
