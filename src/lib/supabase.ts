@@ -20,25 +20,33 @@ export interface PurchaseEvent {
   ip_address?: string;
 }
 
+function generateSessionId(): string {
+  let sessionId = localStorage.getItem('privacy_session_id');
+  if (!sessionId) {
+    sessionId = `session_${Date.now()}_${Math.random().toString(36).substring(2, 15)}`;
+    localStorage.setItem('privacy_session_id', sessionId);
+  }
+  return sessionId;
+}
+
 export async function logPurchaseEvent(email: string): Promise<boolean> {
   try {
-    const now = new Date();
-    const last24Hours = new Date(now.getTime() - 24 * 60 * 60 * 1000);
+    const sessionId = generateSessionId();
+    const uniqueIdentifier = `${sessionId}_${navigator.userAgent}`;
 
     const { data: recentEvent } = await supabase
       .from('purchase_events')
       .select('id, created_at')
-      .eq('user_email', email)
-      .gte('created_at', last24Hours.toISOString())
+      .eq('user_email', uniqueIdentifier)
       .maybeSingle();
 
     if (recentEvent) {
-      console.log('Purchase event already fired in last 24h for:', email);
+      console.log('Purchase event already fired for this session');
       return false;
     }
 
     const eventData: PurchaseEvent = {
-      user_email: email,
+      user_email: uniqueIdentifier,
       event_type: 'Purchase',
       value: 10.00,
       currency: 'BRL',
@@ -54,7 +62,7 @@ export async function logPurchaseEvent(email: string): Promise<boolean> {
       return false;
     }
 
-    console.log('Purchase event logged successfully for:', email);
+    console.log('Purchase event logged successfully');
     return true;
   } catch (error) {
     console.error('Error in logPurchaseEvent:', error);
