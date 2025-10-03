@@ -170,7 +170,7 @@ function App() {
             <div className="text-center mb-8">
               <div className="relative mx-auto w-32 h-32 mb-6">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-full h-full rounded-full object-cover border-4 border-pink-500 shadow-2xl shadow-pink-500/50"
                 />
@@ -269,7 +269,7 @@ function App() {
           <div className="flex items-center space-x-3 mb-4">
             <div className="relative">
               <img
-                src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                 alt="Profile"
                 className="w-16 h-16 rounded-full object-cover border-2 border-blue-500"
               />
@@ -353,7 +353,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -364,14 +364,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
               
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo1.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo1.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo1.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo1.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(1, 'https://files.chefexpress.site/vortex/arquivo1.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(1, 'https://s3.chefexpress.site/vortex/arquivo1.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -399,7 +399,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -411,10 +411,10 @@ function App() {
               </div>
 
               <img
-                src="https://files.chefexpress.site/vortex/imagem1.jpeg"
+                src="https://s3.chefexpress.site/vortex/imagem1.jpeg"
                 alt="Post"
                 className="w-full aspect-square object-cover cursor-pointer"
-                onClick={() => setFullscreenImage('https://files.chefexpress.site/vortex/imagem1.jpeg')}
+                onClick={() => setFullscreenImage('https://s3.chefexpress.site/vortex/imagem1.jpeg')}
                 onDoubleClick={() => handleLike(2)}
               />
 
@@ -437,7 +437,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -448,14 +448,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
               
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo3.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo3.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo3.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo3.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(3, 'https://files.chefexpress.site/vortex/arquivo3.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(3, 'https://s3.chefexpress.site/vortex/arquivo3.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -483,7 +483,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -495,10 +495,10 @@ function App() {
               </div>
 
               <img
-                src="https://files.chefexpress.site/vortex/imagem2.jpeg"
+                src="https://s3.chefexpress.site/vortex/imagem2.jpeg"
                 alt="Post"
                 className="w-full aspect-square object-cover cursor-pointer"
-                onClick={() => setFullscreenImage('https://files.chefexpress.site/vortex/imagem2.jpeg')}
+                onClick={() => setFullscreenImage('https://s3.chefexpress.site/vortex/imagem2.jpeg')}
                 onDoubleClick={() => handleLike(4)}
               />
 
@@ -521,7 +521,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -532,14 +532,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
               
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo5.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo5.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo5.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo5.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(5, 'https://files.chefexpress.site/vortex/arquivo5.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(5, 'https://s3.chefexpress.site/vortex/arquivo5.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -567,7 +567,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -579,10 +579,10 @@ function App() {
               </div>
 
               <img
-                src="https://files.chefexpress.site/vortex/imagem3.jpeg"
+                src="https://s3.chefexpress.site/vortex/imagem3.jpeg"
                 alt="Post"
                 className="w-full aspect-square object-cover cursor-pointer"
-                onClick={() => setFullscreenImage('https://files.chefexpress.site/vortex/imagem3.jpeg')}
+                onClick={() => setFullscreenImage('https://s3.chefexpress.site/vortex/imagem3.jpeg')}
                 onDoubleClick={() => handleLike(6)}
               />
 
@@ -605,7 +605,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -616,14 +616,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
               
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo7.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo7.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo7.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo7.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(7, 'https://files.chefexpress.site/vortex/arquivo7.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(7, 'https://s3.chefexpress.site/vortex/arquivo7.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -651,7 +651,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -663,7 +663,7 @@ function App() {
               </div>
 
               <img
-                src="https://files.chefexpress.site/vortex/imagem2.jpeg"
+                src="https://s3.chefexpress.site/vortex/imagem2.jpeg"
                 alt="Post"
                 className="w-full aspect-square object-cover cursor-pointer"
                 onDoubleClick={() => handleLike(8)}
@@ -688,7 +688,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -699,14 +699,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
               
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo9.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo9.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo9.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo9.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(9, 'https://files.chefexpress.site/vortex/arquivo9.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(9, 'https://s3.chefexpress.site/vortex/arquivo9.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -734,7 +734,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -746,7 +746,7 @@ function App() {
               </div>
 
               <img
-                src="https://files.chefexpress.site/vortex/imagem3.jpeg"
+                src="https://s3.chefexpress.site/vortex/imagem3.jpeg"
                 alt="Post"
                 className="w-full aspect-square object-cover cursor-pointer"
                 onDoubleClick={() => handleLike(10)}
@@ -771,7 +771,7 @@ function App() {
             <div className="border-b border-gray-200 pb-4">
               <div className="flex items-center p-4 pb-3">
                 <img
-                  src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                  src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                   alt="Profile"
                   className="w-8 h-8 rounded-full object-cover mr-3"
                 />
@@ -782,14 +782,14 @@ function App() {
                 <MoreHorizontal className="w-5 h-5 text-gray-400" />
               </div>
 
-              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://files.chefexpress.site/vortex/arquivo11.mp4')}>
+              <div className="relative cursor-pointer" onClick={() => setFullscreenVideo('https://s3.chefexpress.site/vortex/arquivo11.mp4')}>
                 <video
-                  src="https://files.chefexpress.site/vortex/arquivo11.mp4"
+                  src="https://s3.chefexpress.site/vortex/arquivo11.mp4"
                   className="w-full aspect-square object-cover"
                   muted
                   loop
                   playsInline
-                  onDoubleClick={(e) => handleVideoDoubleClick(11, 'https://files.chefexpress.site/vortex/arquivo11.mp4', e)}
+                  onDoubleClick={(e) => handleVideoDoubleClick(11, 'https://s3.chefexpress.site/vortex/arquivo11.mp4', e)}
                 />
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="bg-black/50 rounded-full p-3">
@@ -823,7 +823,7 @@ function App() {
                 <div key={postId} className="border-b border-gray-200 pb-4">
                   <div className="flex items-center p-4 pb-3">
                     <img
-                      src="https://files.chefexpress.site/vortex/fotodeperfil.jpg"
+                      src="https://s3.chefexpress.site/vortex/fotodeperfil.jpg"
                       alt="Profile"
                       className="w-8 h-8 rounded-full object-cover mr-3"
                     />
@@ -834,14 +834,14 @@ function App() {
                     <MoreHorizontal className="w-5 h-5 text-gray-400" />
                   </div>
 
-                  <div className="relative cursor-pointer" onClick={() => setFullscreenVideo(`https://files.chefexpress.site/vortex/arquivo${postId}.mp4`)}>
+                  <div className="relative cursor-pointer" onClick={() => setFullscreenVideo(`https://s3.chefexpress.site/vortex/arquivo${postId}.mp4`)}>
                     <video
-                      src={`https://files.chefexpress.site/vortex/arquivo${postId}.mp4`}
+                      src={`https://s3.chefexpress.site/vortex/arquivo${postId}.mp4`}
                       className="w-full aspect-square object-cover"
                       muted
                       loop
                       playsInline
-                      onDoubleClick={(e) => handleVideoDoubleClick(postId, `https://files.chefexpress.site/vortex/arquivo${postId}.mp4`, e)}
+                      onDoubleClick={(e) => handleVideoDoubleClick(postId, `https://s3.chefexpress.site/vortex/arquivo${postId}.mp4`, e)}
                     />
                     <div className="absolute inset-0 flex items-center justify-center">
                       <div className="bg-black/50 rounded-full p-3">
@@ -940,9 +940,9 @@ function App() {
               <div className="p-4">
                 <div className="grid grid-cols-2 gap-3">
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11].map((num) => (
-                    <div key={num} className="relative cursor-pointer" onClick={() => setFullscreenVideo(`https://files.chefexpress.site/vortex/arquivo${num}.mp4`)}>
+                    <div key={num} className="relative cursor-pointer" onClick={() => setFullscreenVideo(`https://s3.chefexpress.site/vortex/arquivo${num}.mp4`)}>
                       <video
-                        src={`https://files.chefexpress.site/vortex/arquivo${num}.mp4`}
+                        src={`https://s3.chefexpress.site/vortex/arquivo${num}.mp4`}
                         className="w-full h-32 object-cover rounded-lg"
                         muted
                         playsInline
@@ -965,7 +965,7 @@ function App() {
                 <div className="grid grid-cols-2 gap-3">
                   <div className="relative">
                     <img
-                      src="https://files.chefexpress.site/vortex/imagem1.jpeg"
+                      src="https://s3.chefexpress.site/vortex/imagem1.jpeg"
                       alt="Foto 1"
                       className="w-full h-48 object-cover rounded-lg"
                     />
@@ -976,7 +976,7 @@ function App() {
 
                   <div className="relative">
                     <img
-                      src="https://files.chefexpress.site/vortex/imagem2.jpeg"
+                      src="https://s3.chefexpress.site/vortex/imagem2.jpeg"
                       alt="Foto 2"
                       className="w-full h-48 object-cover rounded-lg"
                     />
@@ -987,7 +987,7 @@ function App() {
 
                   <div className="relative">
                     <img
-                      src="https://files.chefexpress.site/vortex/imagem3.jpeg"
+                      src="https://s3.chefexpress.site/vortex/imagem3.jpeg"
                       alt="Foto 3"
                       className="w-full h-48 object-cover rounded-lg"
                     />
@@ -998,7 +998,7 @@ function App() {
 
                   <div className="relative">
                     <img
-                      src="https://files.chefexpress.site/vortex/imagem1.jpeg"
+                      src="https://s3.chefexpress.site/vortex/imagem1.jpeg"
                       alt="Foto 4"
                       className="w-full h-48 object-cover rounded-lg"
                     />
