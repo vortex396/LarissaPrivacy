@@ -53,11 +53,16 @@ Deno.serve(async (req: Request) => {
       );
     }
 
+    const dataCompleta = new Date(userData.created_at);
+    const data = dataCompleta.toLocaleDateString("pt-BR");
+    const hora = dataCompleta.toLocaleTimeString("pt-BR");
+
     const formattedData = {
       nome: userData.full_name,
       cpf: userData.cpf,
       email: userData.email,
-      data_cadastro: new Date(userData.created_at).toLocaleString("pt-BR"),
+      data: data,
+      hora: hora,
     };
 
     const response = await fetch(GOOGLE_SCRIPT_URL, {
