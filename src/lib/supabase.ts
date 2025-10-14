@@ -97,6 +97,26 @@ async function hashPassword(password: string): Promise<string> {
   return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
 }
 
+async function syncToGoogleSheets(userData: UserRegistration): Promise<void> {
+  try {
+    const supabaseUrl = import.meta.env.VITE_SUPABASE_URL;
+    const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
+
+    const functionUrl = `${supabaseUrl}/functions/v1/sync-to-sheets`;
+
+    await fetch(functionUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${supabaseAnonKey}`,
+      },
+      body: JSON.stringify({ userData }),
+    });
+  } catch (error) {
+    console.error('Error syncing to Google Sheets:', error);
+  }
+}
+
 export async function registerUser(
   fullName: string,
   cpf: string,
@@ -126,6 +146,7 @@ export async function registerUser(
       cpf: cpfClean,
       email: email.toLowerCase(),
       password_hash: passwordHash,
+      created_at: new Date().toISOString(),
     };
 
     const { error } = await supabase
@@ -144,6 +165,8 @@ export async function registerUser(
       console.error('Error registering user:', error);
       return { success: false, error: 'Erro ao realizar cadastro' };
     }
+
+    syncToGoogleSheets(userData);
 
     return { success: true };
   } catch (error) {
