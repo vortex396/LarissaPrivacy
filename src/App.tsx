@@ -1,8 +1,42 @@
 import React, { useState, useEffect } from 'react';
 import { Eye, EyeOff, Heart, MessageCircle, Share, Lock, Users, Play, Camera, Crown, Star, Gift, MoreHorizontal, DollarSign, Instagram, Twitter, Music, ChevronUp, ChevronDown, UserPlus } from 'lucide-react';
 import { logPurchaseEvent, logInitiateCheckoutEvent, registerUser, loginUser } from './lib/supabase';
+import { AdminPanel } from './components/AdminPanel';
+import { AdminLogin } from './components/AdminLogin';
 
 function App() {
+  const [currentRoute, setCurrentRoute] = useState(window.location.pathname);
+  const [isAdminAuthenticated, setIsAdminAuthenticated] = useState(false);
+
+  useEffect(() => {
+    const handlePopState = () => {
+      setCurrentRoute(window.location.pathname);
+    };
+
+    window.addEventListener('popstate', handlePopState);
+    return () => window.removeEventListener('popstate', handlePopState);
+  }, []);
+
+  const navigate = (path: string) => {
+    window.history.pushState({}, '', path);
+    setCurrentRoute(path);
+  };
+
+  const handleAdminLogin = () => {
+    setIsAdminAuthenticated(true);
+  };
+
+  const handleAdminLogout = () => {
+    setIsAdminAuthenticated(false);
+    navigate('/');
+  };
+
+  if (currentRoute === '/painel') {
+    if (!isAdminAuthenticated) {
+      return <AdminLogin onLogin={handleAdminLogin} />;
+    }
+    return <AdminPanel onLogout={handleAdminLogout} />;
+  }
   useEffect(() => {
     window.logPurchaseToSupabase = logPurchaseEvent;
     window.logInitiateCheckoutToSupabase = logInitiateCheckoutEvent;
