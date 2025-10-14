@@ -77,3 +77,113 @@ export async function logPurchaseEvent(email: string): Promise<boolean> {
 export async function logInitiateCheckoutEvent(email: string): Promise<boolean> {
   return logEvent(email, 'InitiateCheckout');
 }
+
+export interface UserRegistration {
+  id?: string;
+  full_name: string;
+  cpf: string;
+  email: string;
+  password_hash: string;
+  created_at?: string;
+  last_login?: string;
+  is_active?: boolean;
+}
+
+async function hashPassword(password: string): Promise<string> {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+  const hashArray = Array.from(new Uint8Array(hashBuffer));
+  return hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
+}
+
+export async function registerUser(
+  fullName: string,
+  cpf: string,
+  email: string,
+  password: string
+): Promise<{ success: boolean; error?: string }> {
+  try {
+    const cpfClean = cpf.replace(/\D/g, '');
+
+    if (cpfClean.length !== 11) {
+      return { success: false, error: 'CPF inválido' };
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      return { success: false, error: 'E-mail inválido' };
+    }
+
+    if (password.length < 6) {
+      return { success: false, error: 'Senha deve ter no mínimo 6 caracteres' };
+    }
+
+    const passwordHash = await hashPassword(password);
+
+    const userData: UserRegistration = {
+      full_name: fullName,
+      cpf: cpfClean,
+      email: email.toLowerCase(),
+      password_hash: passwordHash,
+    };
+
+    const { error } = await supabase
+      .from('user_registrations')
+      .insert([userData]);
+
+    if (error) {
+      if (error.code === '23505') {
+        if (error.message.includes('cpf')) {
+          return { success: false, error: 'CPF já cadastrado' };
+        }
+        if (error.message.includes('email')) {
+          return { success: false, error: 'E-mail já cadastrado' };
+        }
+      }
+      console.error('Error registering user:', error);
+      return { success: false, error: 'Erro ao realizar cadastro' };
+    }
+
+    return { success: true };
+  } catch (error) {
+    console.error('Error in registerUser:', error);
+    return { success: false, error: 'Erro ao realizar cadastro' };
+  }
+}
+
+export async function loginUser(
+  email: string,
+  password: string
+): Promise<{ success: boolean; user?: UserRegistration; error?: string }> {
+  try {
+    const passwordHash = await hashPassword(password);
+
+    const { data, error } = await supabase
+      .from('user_registrations')
+      .select('*')
+      .eq('email', email.toLowerCase())
+      .eq('password_hash', passwordHash)
+      .eq('is_active', true)
+      .maybeSingle();
+
+    if (error) {
+      console.error('Error logging in:', error);
+      return { success: false, error: 'Erro ao realizar login' };
+    }
+
+    if (!data) {
+      return { success: false, error: 'E-mail ou senha incorretos' };
+    }
+
+    await supabase
+      .from('user_registrations')
+      .update({ last_login: new Date().toISOString() })
+      .eq('id', data.id);
+
+    return { success: true, user: data };
+  } catch (error) {
+    console.error('Error in loginUser:', error);
+    return { success: false, error: 'Erro ao realizar login' };
+  }
+}
