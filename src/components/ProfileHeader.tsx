@@ -1,5 +1,5 @@
-import React from 'react';
-import { Instagram, Twitter, Music, DollarSign, MessageCircle, Settings, Crown } from 'lucide-react';
+import React, { useState } from 'react';
+import { Instagram, Twitter, Music, DollarSign, MessageCircle, Settings, Crown, Copy, Check, X } from 'lucide-react';
 
 interface ProfileHeaderProps {
   showFullBio: boolean;
@@ -7,6 +7,17 @@ interface ProfileHeaderProps {
 }
 
 export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) {
+  const [showPixModal, setShowPixModal] = useState(false);
+  const [copied, setCopied] = useState(false);
+
+  const pixKey = '44988164843';
+  const pixName = 'Vortex Futuro';
+
+  const handleCopyPix = () => {
+    navigator.clipboard.writeText(pixKey);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  };
   return (
     <div className="bg-white border-b border-gray-200">
       <div className="px-4 pt-6 pb-4">
@@ -103,7 +114,10 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
         </div>
 
         <div className="grid grid-cols-2 gap-3">
-          <button className="flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg">
+          <button
+            onClick={() => setShowPixModal(true)}
+            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
+          >
             <DollarSign className="w-5 h-5" />
             <span>Enviar Mimo</span>
           </button>
@@ -113,6 +127,66 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
           </button>
         </div>
       </div>
+
+      {showPixModal && (
+        <div className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50 flex items-center justify-center p-4">
+          <div className="bg-white rounded-2xl shadow-2xl max-w-md w-full p-6 transform transition-all">
+            <div className="flex items-center justify-between mb-6">
+              <h3 className="text-2xl font-bold text-gray-900">Enviar Mimo 💝</h3>
+              <button
+                onClick={() => setShowPixModal(false)}
+                className="text-gray-400 hover:text-gray-600 transition-colors"
+              >
+                <X className="w-6 h-6" />
+              </button>
+            </div>
+
+            <div className="bg-gradient-to-br from-pink-50 to-red-50 rounded-xl p-6 mb-6 border-2 border-pink-200">
+              <div className="text-center mb-4">
+                <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-pink-500 to-red-500 rounded-full mb-3">
+                  <DollarSign className="w-8 h-8 text-white" />
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 mb-1">{pixName}</h4>
+                <p className="text-sm text-gray-600">Agência de conteúdo</p>
+              </div>
+
+              <div className="bg-white rounded-lg p-4 mb-4">
+                <p className="text-xs text-gray-500 mb-2 font-medium">Chave PIX (Celular):</p>
+                <div className="flex items-center justify-between">
+                  <span className="text-lg font-mono font-bold text-gray-900">(44) 98816-4843</span>
+                </div>
+              </div>
+
+              <button
+                onClick={handleCopyPix}
+                className={`w-full flex items-center justify-center space-x-2 py-3 px-4 rounded-lg font-semibold transition-all duration-300 ${
+                  copied
+                    ? 'bg-green-500 text-white'
+                    : 'bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white'
+                }`}
+              >
+                {copied ? (
+                  <>
+                    <Check className="w-5 h-5" />
+                    <span>Copiado!</span>
+                  </>
+                ) : (
+                  <>
+                    <Copy className="w-5 h-5" />
+                    <span>Copiar Chave PIX</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            <div className="text-center">
+              <p className="text-sm text-gray-600 leading-relaxed">
+                Depois de enviar, tire um print e mande para ganhar acesso a conteúdos exclusivos! 💕
+              </p>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }
