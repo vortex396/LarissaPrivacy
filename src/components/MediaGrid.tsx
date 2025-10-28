@@ -17,78 +17,73 @@ export function MediaGrid({ activeTab, onTabChange, onMediaClick }: MediaGridPro
   ];
 
   return (
-    <div className="bg-white">
-      <div className="border-b border-gray-200 p-4">
-        <div className="flex space-x-4">
+    <div className="bg-black">
+      <div className="border-b border-gray-900 px-3 py-3">
+        <div className="flex space-x-3">
           <button
-            className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            className={`flex items-center space-x-1.5 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
               activeTab === 'videos'
-                ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-gradient-to-r from-red-500 to-pink-500 text-white'
+                : 'bg-gray-900 text-gray-400 hover:bg-gray-800'
             }`}
             onClick={() => onTabChange('videos')}
           >
-            <Play className="w-5 h-5" />
+            <Play className="w-4 h-4" />
             <span>Vídeos</span>
           </button>
           <button
-            className={`flex items-center space-x-2 px-6 py-3 rounded-xl font-semibold transition-all duration-300 ${
+            className={`flex items-center space-x-1.5 px-4 py-2 rounded-lg font-semibold text-sm transition-all duration-300 ${
               activeTab === 'fotos'
-                ? 'bg-gradient-to-r from-pink-500 to-red-500 text-white shadow-lg'
-                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                ? 'bg-gradient-to-r from-pink-500 to-red-500 text-white'
+                : 'bg-gray-900 text-gray-400 hover:bg-gray-800'
             }`}
             onClick={() => onTabChange('fotos')}
           >
-            <Camera className="w-5 h-5" />
+            <Camera className="w-4 h-4" />
             <span>Fotos</span>
           </button>
         </div>
       </div>
 
-      <div className="p-4">
+      <div className="px-1 py-2">
         {activeTab === 'videos' ? (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-1">
             {videos.map((num) => (
               <div
                 key={num}
-                className="relative cursor-pointer group overflow-hidden rounded-xl"
+                className="relative cursor-pointer group overflow-hidden aspect-[9/16] bg-gray-900"
                 onClick={() => onMediaClick('video', `https://s3.chefexpress.site/vortex/arquivo${num}.mp4`)}
               >
                 <video
                   src={`https://s3.chefexpress.site/vortex/arquivo${num}.mp4`}
-                  className="w-full h-40 object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                   muted
                   playsInline
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent flex items-center justify-center">
-                  <div className="bg-white/90 backdrop-blur-sm rounded-full p-3 group-hover:scale-110 transition-transform">
-                    <Play className="w-8 h-8 text-pink-600 fill-current" />
+                <div className="absolute inset-0 bg-black/20 flex items-center justify-center">
+                  <div className="bg-black/50 backdrop-blur-sm rounded-full p-2">
+                    <Play className="w-6 h-6 text-white fill-current" />
                   </div>
                 </div>
-                <div className="absolute bottom-2 left-2 text-white text-xs font-semibold bg-black/70 px-2 py-1 rounded">
+                <div className="absolute bottom-1 right-1 text-white text-xs font-semibold bg-black/70 px-1.5 py-0.5 rounded">
                   {Math.floor(Math.random() * 3) + 1}:{String(Math.floor(Math.random() * 60)).padStart(2, '0')}
                 </div>
               </div>
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-3 gap-1">
             {images.map((img, idx) => (
               <div
                 key={idx}
-                className="relative cursor-pointer group overflow-hidden rounded-xl"
+                className="relative cursor-pointer group overflow-hidden aspect-square bg-gray-900"
                 onClick={() => onMediaClick('image', img)}
               >
                 <img
                   src={img}
                   alt={`Foto ${idx + 1}`}
-                  className="w-full h-56 object-cover transition-transform duration-300 group-hover:scale-110"
+                  className="w-full h-full object-cover"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="absolute bottom-2 left-2 text-white text-sm font-semibold">
-                    ❤️ {150 + idx * 50}
-                  </div>
-                </div>
               </div>
             ))}
           </div>

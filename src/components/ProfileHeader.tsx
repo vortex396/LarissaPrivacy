@@ -19,8 +19,8 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
     setTimeout(() => setCopied(false), 2000);
   };
   return (
-    <div className="bg-white border-b border-gray-200">
-      <div className="px-4 pt-6 pb-4">
+    <div className="bg-black border-b border-gray-900">
+      <div className="px-4 pt-4 pb-4">
         <div className="flex items-start justify-between mb-4">
           <div className="flex items-center space-x-4">
             <div className="relative">
@@ -35,43 +35,39 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
               <div className="absolute top-0 -right-1 w-4 h-4 bg-green-500 border-2 border-white rounded-full animate-pulse"></div>
             </div>
             <div>
-              <h2 className="text-xl font-bold text-gray-900 mb-1">
+              <h2 className="text-lg font-bold text-white mb-0.5">
                 Larissa Silva
               </h2>
-              <div className="flex items-center space-x-2 mb-2">
-                <p className="text-blue-600 font-medium text-sm">@larissasilva_</p>
-                <span className="px-2 py-0.5 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs font-semibold rounded-full">
+              <div className="flex items-center space-x-2 mb-1">
+                <p className="text-gray-400 font-medium text-xs">@larissasilva_</p>
+                <span className="px-1.5 py-0.5 bg-gradient-to-r from-pink-500 to-red-500 text-white text-xs font-semibold rounded-full">
                   VIP
                 </span>
               </div>
-              <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
-                <span className="text-green-600 text-xs font-medium">Online agora</span>
-              </div>
             </div>
           </div>
-          <button className="text-gray-500 hover:text-gray-700 transition-colors">
+          <button className="text-gray-400 hover:text-white transition-colors">
             <Settings className="w-5 h-5" />
           </button>
         </div>
 
-        <div className="grid grid-cols-3 gap-4 mb-4 p-4 bg-gradient-to-r from-pink-50 to-red-50 rounded-xl">
+        <div className="grid grid-cols-3 gap-4 mb-3 py-3">
           <div className="text-center">
-            <div className="font-bold text-lg text-gray-900">73</div>
-            <div className="text-xs text-gray-600">Posts</div>
+            <div className="font-bold text-base text-white">73</div>
+            <div className="text-xs text-gray-400">Posts</div>
           </div>
-          <div className="text-center border-x border-pink-200">
-            <div className="font-bold text-lg text-gray-900">2.4K</div>
-            <div className="text-xs text-gray-600">Curtidas</div>
+          <div className="text-center border-x border-gray-800">
+            <div className="font-bold text-base text-white">2.4K</div>
+            <div className="text-xs text-gray-400">Curtidas</div>
           </div>
           <div className="text-center">
-            <div className="font-bold text-lg text-gray-900">892</div>
-            <div className="text-xs text-gray-600">Fãs</div>
+            <div className="font-bold text-base text-white">892</div>
+            <div className="text-xs text-gray-400">Fãs</div>
           </div>
         </div>
 
-        <div className="mb-4">
-          <p className="text-gray-700 text-sm leading-relaxed">
+        <div className="mb-3">
+          <p className="text-gray-300 text-sm leading-relaxed">
             {showFullBio ? (
               <>
                 Sou a Larissa, tenho 22 aninhos 😘✨ toda tímida de cara, mas bem safadinha quando me solto… adoro tirar fotinhas íntimas no meu quarto e mandar só pra quem me trata com carinho 💋
@@ -86,13 +82,13 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
           </p>
           <button
             onClick={onToggleBio}
-            className="text-blue-600 text-sm font-medium mt-1 hover:text-blue-700 transition-colors"
+            className="text-gray-400 text-sm font-medium mt-1 hover:text-gray-300 transition-colors"
           >
             {showFullBio ? 'Mostrar menos' : 'Ler mais'}
           </button>
         </div>
 
-        <div className="flex items-center space-x-3 mb-4 pb-4 border-b border-gray-100">
+        <div className="flex items-center space-x-3 mb-3 pb-3 border-b border-gray-900">
           <a
             href="#"
             className="flex items-center justify-center w-10 h-10 rounded-full bg-gradient-to-br from-purple-500 to-pink-500 text-white hover:scale-110 transition-transform"
@@ -113,16 +109,16 @@ export function ProfileHeader({ showFullBio, onToggleBio }: ProfileHeaderProps) 
           </a>
         </div>
 
-        <div className="grid grid-cols-2 gap-3">
+        <div className="grid grid-cols-2 gap-2.5">
           <button
             onClick={() => setShowPixModal(true)}
-            className="flex items-center justify-center space-x-2 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg"
+            className="flex items-center justify-center space-x-1.5 bg-gradient-to-r from-pink-500 to-red-500 hover:from-pink-600 hover:to-red-600 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-300 text-sm"
           >
-            <DollarSign className="w-5 h-5" />
+            <DollarSign className="w-4 h-4" />
             <span>Enviar Mimo</span>
           </button>
-          <button className="flex items-center justify-center space-x-2 bg-gradient-to-r from-blue-500 to-blue-600 hover:from-blue-600 hover:to-blue-700 text-white font-semibold py-3 px-4 rounded-xl transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg">
-            <MessageCircle className="w-5 h-5" />
+          <button className="flex items-center justify-center space-x-1.5 bg-gray-800 hover:bg-gray-700 text-white font-semibold py-2 px-3 rounded-lg transition-all duration-300 text-sm">
+            <MessageCircle className="w-4 h-4" />
             <span>Mensagem</span>
           </button>
         </div>

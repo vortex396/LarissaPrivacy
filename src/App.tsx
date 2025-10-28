@@ -105,18 +105,18 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 pb-20">
-      <div className="bg-gradient-to-r from-pink-500 to-red-500 border-b border-pink-600 sticky top-0 z-10 shadow-lg">
-        <div className="max-w-2xl mx-auto px-4 py-4">
+    <div className="min-h-screen bg-black pb-16">
+      <div className="bg-black border-b border-gray-800 sticky top-0 z-20">
+        <div className="max-w-md mx-auto px-4 py-3">
           <div className="flex items-center justify-center">
-            <h1 className="text-xl font-bold text-white tracking-wide">
-              Larissa Privacy ✨
+            <h1 className="text-2xl font-bold bg-gradient-to-r from-pink-400 to-red-400 bg-clip-text text-transparent tracking-tight">
+              Larissa Privacy
             </h1>
           </div>
         </div>
       </div>
 
-      <div className="max-w-2xl mx-auto">
+      <div className="max-w-md mx-auto bg-black">
         <ProfileHeader
           showFullBio={showFullBio}
           onToggleBio={() => setShowFullBio(!showFullBio)}
@@ -128,7 +128,7 @@ function App() {
         />
 
         {activeTab === 'feed' ? (
-          <div className="bg-white">
+          <div className="bg-black">
             {feedPosts.map((post) => (
               <FeedPost
                 key={post.id}
